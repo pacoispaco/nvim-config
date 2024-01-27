@@ -106,10 +106,6 @@ return {
               end,
             })
 
-            local fooshoo = 1
-
-            local bar = fooshoo + 1
-
         end
     }
 }
