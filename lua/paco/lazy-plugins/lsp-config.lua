@@ -28,7 +28,9 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspconfig.lua_ls.setup({
+                capabilities = capabilities, -- This is for cmp_nvim_lsp to tell lua_ls that it can handle completion.
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -42,6 +44,7 @@ return {
                 },
             })
             lspconfig.pylsp.setup({
+                capabilities = capabilities, -- This is for cmp_nvim_lsp to tell pylsp that it can handle completion.
             	settings = {
 		            pylsp = {
             			plugins = {
