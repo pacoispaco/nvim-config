@@ -61,7 +61,6 @@ return {
             })
             lspconfig.html.setup({
                 capabilities = capabilities,
-                on_attach = on_attach,
                 init_options = {
                     configurationSection = { "html", "css", "javascript" },
                     embeddedLanguages = {
