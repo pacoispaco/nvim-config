@@ -16,6 +16,7 @@ return {
                     ensure_installed = {
                         "lua_ls",
                         "pylsp",
+                        "html",
                     },
                 }
             )
@@ -30,7 +31,7 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             lspconfig.lua_ls.setup({
-                capabilities = capabilities, -- This is for cmp_nvim_lsp to tell lua_ls that it can handle completion.
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -44,7 +45,7 @@ return {
                 },
             })
             lspconfig.pylsp.setup({
-                capabilities = capabilities, -- This is for cmp_nvim_lsp to tell pylsp that it can handle completion.
+                capabilities = capabilities,
             	settings = {
 		            pylsp = {
             			plugins = {
@@ -57,6 +58,18 @@ return {
 			            },
 		            },
             	},
+            })
+            lspconfig.html.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                init_options = {
+                    configurationSection = { "html", "css", "javascript" },
+                    embeddedLanguages = {
+                        css = true,
+                        javascript = true,
+                    },
+                    provideFormatter = true,
+                },
             })
 
             -- EVERYTHING BELOW IS IS BASED ON https://github.com/neovim/nvim-lspconfig#suggested-configuration
