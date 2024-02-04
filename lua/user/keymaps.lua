@@ -1,4 +1,4 @@
--- print("Sourcing lua/paco/keymaps.lua")
+-- print("Sourcing lua/user/keymaps.lua")
 
 -- set leader key to space
 vim.g.mapleader = " "

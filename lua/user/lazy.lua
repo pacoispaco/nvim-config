@@ -1,4 +1,4 @@
--- print("Sourcing lua/paco/lazy.lua")
+-- print("Sourcing lua/user/lazy.lua")
 
 -- Install lazy.nvim as plugin manager.
 
@@ -15,4 +15,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("paco.lazy-plugins")
+require("lazy").setup("user.lazy-plugins")

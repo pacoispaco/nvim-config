@@ -1,4 +1,4 @@
--- print("Sourcing lua/paco/options.lua")
+-- print("Sourcing lua/user/options.lua")
 
 -- Basic Neovim configuration options
 
