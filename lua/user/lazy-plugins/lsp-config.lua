@@ -14,7 +14,10 @@ return {
             require("mason-lspconfig").setup(
                 {
                     ensure_installed = {
+                        -- LSP-servers
                         "lua_ls",
+                        "clangd",
+                        "zls",
                         "pylsp",
                         "html",
                     },
@@ -30,6 +33,8 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+            -- Lua
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
                 settings = {
@@ -44,6 +49,29 @@ return {
                     },
                 },
             })
+
+            -- C and C++
+            lspconfig.clangd.setup ({
+                capabilities = capabilities,
+                -- The following two settings copied from someone elses config.
+                root_dir = lspconfig.util.root_pattern(
+                    ".clangd",
+                    ".clang-tidy",
+                    ".clang-format",
+                    "compile_commands.json",
+                    "compile_flags.txt",
+                    "configure.ac",
+                    ".git"
+                ),
+                single_file_support = true,
+            })
+
+            -- Zig
+            lspconfig.zls.setup({
+                capabilities = capabilities,
+            })
+
+            -- Python
             lspconfig.pylsp.setup({
                 capabilities = capabilities,
             	settings = {
@@ -59,6 +87,8 @@ return {
 		            },
             	},
             })
+
+            -- HTML
             lspconfig.html.setup({
                 capabilities = capabilities,
                 init_options = {
