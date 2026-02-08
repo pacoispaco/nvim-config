@@ -19,7 +19,8 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- Line wrapping
-opt.wrap = false      -- No line wraps
+opt.wrap = true         -- No line wraps
+opt.linebreak = true    -- Break lines at words
 
 -- Search settings
 opt.ignorecase = true -- When searching with lowercase ignore case
@@ -52,17 +53,16 @@ opt.iskeyword:append("-")
 -- See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
--- The functions vim.diagnostic.show() and vim.diagnostic.open_float() are not working.
--- I tried adding the configuration below, but that does not help.
---vim.diagnostic.config {
---    underline = true,
---    virtual_text = {
---        prefix = "",
---        severity = nil,
---        source = "if_many",
---        format = nil,
---    },
---    signs = true,
---    severity_sort = true,
---    update_in_insert = false,
---}
+-- This is for showing diagnostics in popup windows.
+-- I define the shortcut "<leader>d" in "lsp-config.lua" to bring up the windows
+vim.diagnostic.config({
+  virtual_text = false, -- Disables inline messages completely
+  signs = true,         -- Keep E/W icons in the gutter
+  underline = true,     -- Underline the problem text
+  update_in_insert = false,
+  float = {
+    border = "rounded",
+    source = "if_many",
+    wrap = true,
+  },
+})

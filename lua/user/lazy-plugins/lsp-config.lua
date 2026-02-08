@@ -106,7 +106,7 @@ return {
             -- See `:help vim.diagnostic.*` for documentation on any of the below functions
             vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'LSP: Goto previous diagnostic' })
             vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'LSP: Goto next diagnostic' } )
-            vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'LSP: Show diagnostics in floating window'} )
+            vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'LSP: Show diagnostics in floating window'} )
             vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'LSP: Add buffer diagnostics to the location list' })
 
             -- Use LspAttach autocommand to only map the following keys
